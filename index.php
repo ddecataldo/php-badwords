@@ -10,7 +10,9 @@
     
     <?php
 
-        $parolaUtente = $_GET["parola"];
+        if(isset($_GET["parola"])){
+            $parolaUtente = $_GET["parola"];
+        }
         $testoCensurato;
 
 
@@ -21,8 +23,11 @@
         // Conto la lunghezza della stringa
         $lunghezzaTesto = strlen($testoSenzaSpazi);
 
-        if($parolaUtente){
+        if(isset($parolaUtente)){
             $testoCensurato = str_replace($parolaUtente, "***" , $testo);
+            $lunghezzaTesto = strlen($testoCensurato);
+        } else {
+            $testoCensurato = $testo;
         }
 
     ?>
